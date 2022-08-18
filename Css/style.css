@@ -1,0 +1,85 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #EEF9BF;
+}
+
+.container {
+    width: 100%;
+    justify-content:center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.titulo {
+
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 66px;
+    letter-spacing: -0.004em;
+    text-align: center;
+    color: #75B79E;
+    margin-top: 40px;
+    margin-bottom: 30px;
+
+}
+.jogo{
+    width: 950px;
+    height: 400px ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40px;
+    
+
+}
+.jogo > * {
+
+    height: 146px;
+    width: 117px;
+    border-radius: 5px;
+    background-color: #A7E9AF;
+    margin-right: 34px;
+    margin-bottom: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #99CEA8;
+    position: relative;
+    
+
+}
+.jogo img{
+    height: 100px;
+    width: 100px;
+    border-radius: 0px;
+}
+.nova-imagem{
+    position: absolute;
+    height: 146px;
+    width: 117px;
+    background-color: #A7E9AF;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.esconder{
+    display: none;
+}
+@media(max-width: 335px){
+
+    .titulo{
+        font-size: 36px;
+    }
+    
+}
+
