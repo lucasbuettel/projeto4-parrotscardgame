@@ -106,17 +106,17 @@ function clicaCarta(carta){
 
         }, 1000);
 
-            
-        
         }
     }
+
     let mudaTempo=0;
+    let idInterval;
 function timer(){
     let tempo = document.querySelector(".timer");
     tempo.innerHTML = Number(tempo.innerHTML) + 1;
     mudaTempo = tempo.innerHTML;
 }
-setInterval(timer, 1000);
+idInterval = setInterval(timer, 1000);
     
     function finalizaJogo(){
         const cartasViradas = document.querySelectorAll(".virar");
@@ -127,6 +127,7 @@ setInterval(timer, 1000);
             pergunta = prompt('Deseja jogar outra partida? (responda com sim ou não)');
             pergunta.toLowerCase();
             pergunta.normalize('NFD');
+            clearInterval(idInterval);
             if(pergunta === "nao"){
                 alert("Obrigado por jogar!");
                 return;
