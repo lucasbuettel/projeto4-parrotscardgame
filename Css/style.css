@@ -28,17 +28,22 @@ body {
 }
 .jogo{
     width: 950px;
-    height: 400px ;
+    height: 600px ;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-left: 40px;
     
-
 }
-.jogo > * {
+.carta img{
+    height: 100px;
+    width: 100px;
+    border-radius: 0px;
+}
 
+
+.carta{
     height: 146px;
     width: 117px;
     border-radius: 5px;
@@ -50,30 +55,26 @@ body {
     justify-content: center;
     align-items: center;
     border: 1px solid #99CEA8;
-    position: relative;
-    
 
-}
-.jogo img{
-    height: 100px;
-    width: 100px;
-    border-radius: 0px;
-}
-.nova-imagem{
-    position: absolute;
-    height: 146px;
-    width: 117px;
-    background-color: #A7E9AF;
-    
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    
+    transition: all 1s;
+   
 }
 
+.frente {
+
+   
+}
+.tras{
+    transform: scaleX(-1);
+}
+
+.virar{
+    transform: rotateY(180deg);
+    
+}
 .esconder{
     display: none;
+    
 }
 @media(max-width: 335px){
 

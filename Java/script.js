@@ -40,41 +40,70 @@ for(j=0; j < arrayNum.length; j++){
 }
 console.log(NovoArrayImagens);
 
-
 //distribuição das cartas
 let contador = 1;
 let index = 0;
-
 while(converteNum >= contador){
     
-    elemento.innerHTML = elemento.innerHTML + `<div class="card${contador}" onclick = "clicaCarta(this)"><img src="./imagens/front.png">
-    <div class = "nova-imagem esconder">${NovoArrayImagens[index]}</div></div>`;
+    elemento.innerHTML = elemento.innerHTML + `<div class = "carta" onclick = "clicaCarta(this)">
+    <div class="frente "><img src="./imagens/front.png"></div>
+    <div class = "tras esconder">${NovoArrayImagens[index]}</div></div>`;
     contador++;
     index++;
     
 }
 
+const vetorCartas = document.querySelectorAll(".carta");
+console.log(vetorCartas);
+let vetCompara =[];
+
+function clicaCarta(carta){
+
+    
+    const efeitoVirar = carta;
+    efeitoVirar.classList.add('virar');
+    
+    console.log(carta);
+    const selecionaCarta = carta.querySelector(`.tras`);
+    selecionaCarta.classList.remove('esconder');
+
+    const viraCarta = carta.querySelector(`.frente `);
+    viraCarta.classList.add('esconder');
+    
+  
+    
+    vetCompara.push(carta);
+    console.log(vetCompara);
+    console.log(efeitoVirar);
+    console.log(selecionaCarta);
+    console.log(viraCarta);
+
+    if(vetCompara.length === 2){
+
+        for(let i = 0; i<2; i++){
+            if (vetCompara[0] === vetCompara[1]){
+                vetCompara = [];
+                console.log(vetCompara);
+        }   else {
+        
+        efeitoVirar.classList.remove('virar');
+        
+        viraCarta.classList.remove('esconder');
+        
+        selecionaCarta.classList.add('esconder');
+    
+        
+    }
+    }
+}
+}
+
+
+   
+
+
+
+
  
-//let arrayCartas = document.querySelectorAll(".nova-imagem");
-//console.log(arrayCartas);
 
 
-
-
-//let arrayImagens =[`<img src="./imagens/bobrossparrot.gif">`,`<img src="./imagens/explodyparrot.gif">`,`<img src="./imagens/fiestaparrot.gif">`,`<img src="./imagens/metalparrot.gif">`,`<img src="./imagens/revertitparrot.gif">`,`<img src="./imagens/tripletsparrot.gif">`,`<img src="./imagens/unicornparrot.gif">`];
-//let novoArray = []
-//const dividePor2 = converteNum/2;
-//novoArray.push(arrayImagens[dividePor2]);
-//function clicaCarta(recebeClass){
-    //contador = 1;
-    //let index = 0;
-    //for(contador = 1; converteNum >= contador; contador++){
-   //     recebeImagem = document.querySelector(`.card${contador}`);
-   // recebeImagem.innerHTML = arrayImagens[index];
-   // contador ++;
-   //  recebeImagem = document.querySelector(`.card${contador}`);
-  //  recebeImagem.innerHTML = arrayImagens[index];
-   // index++;
-   // }   
-
-//}
