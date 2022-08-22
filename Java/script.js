@@ -17,7 +17,7 @@ console.log(elemento);
 
 
 
-let arrayImagens =[`<img src="./imagens/bobrossparrot.gif">`,`<img src="./imagens/explodyparrot.gif">`,`<img src="./imagens/fiestaparrot.gif">`,`<img src="./imagens/metalparrot.gif">`,`<img src="./imagens/revertitparrot.gif">`,`<img src="./imagens/tripletsparrot.gif">`,`<img src="./imagens/unicornparrot.gif">`];
+let arrayImagens =[`bobrossparrot`,`explodyparrot`,`fiestaparrot`,`metalparrot`,`revertitparrot`,`tripletsparrot`,`unicornparrot`];
 
 // array que cria posições dos vetores
 let arrayNum=[];
@@ -45,58 +45,99 @@ let contador = 1;
 let index = 0;
 while(converteNum >= contador){
     
-    elemento.innerHTML = elemento.innerHTML + `<div class = "carta" onclick = "clicaCarta(this)">
+    elemento.innerHTML = elemento.innerHTML + `<div class = "carta" onclick = "clicaCarta(this)" data-character ="${NovoArrayImagens[index]}">
     <div class="frente "><img src="./imagens/front.png"></div>
-    <div class = "tras esconder">${NovoArrayImagens[index]}</div></div>`;
+    <div class = "tras "><img src="./imagens/${NovoArrayImagens[index]}.gif"></div></div>`;
     contador++;
     index++;
     
 }
 
-const vetorCartas = document.querySelectorAll(".carta");
-console.log(vetorCartas);
-let vetCompara =[];
+let primeiraCarta = '';
+let segundaCarta = '';
 
 function clicaCarta(carta){
-
-    
     const efeitoVirar = carta;
+
+        if(carta.className.includes("virar")){
+            return;
+        }
+    
+    if(primeiraCarta === ''){
+       
     efeitoVirar.classList.add('virar');
-    
-    console.log(carta);
-    const selecionaCarta = carta.querySelector(`.tras`);
-    selecionaCarta.classList.remove('esconder');
+    primeiraCarta = carta;
+    } else if(segundaCarta === ''){
+       
+        efeitoVirar.classList.add('virar');
+        segundaCarta = carta;
+        }
 
-    const viraCarta = carta.querySelector(`.frente `);
-    viraCarta.classList.add('esconder');
-    
-  
-    
-    vetCompara.push(carta);
-    console.log(vetCompara);
-    console.log(efeitoVirar);
-    console.log(selecionaCarta);
-    console.log(viraCarta);
-
-    if(vetCompara.length === 2){
-
-        for(let i = 0; i<2; i++){
-            if (vetCompara[0] === vetCompara[1]){
-                vetCompara = [];
-                console.log(vetCompara);
-        }   else {
-        
-        efeitoVirar.classList.remove('virar');
-        
-        viraCarta.classList.remove('esconder');
-        
-        selecionaCarta.classList.add('esconder');
-    
-        
+        cofereCartas();
     }
+
+    function cofereCartas(){
+        const primeiraImagem = primeiraCarta.getAttribute('data-character');
+        const segundaImagem = segundaCarta.getAttribute('data-character');
+
+        if(primeiraImagem === segundaImagem){
+            primeiraCarta = '';
+            segundaCarta = '';
+
+            finalizaJogo();
+
+        } else {
+
+            setTimeout(() =>    {
+            primeiraCarta.classList.remove("virar");
+            segundaCarta.classList.remove("virar");
+
+            primeiraCarta = '';
+            segundaCarta = '';
+
+        }, 1000);
+
+            
+        
+        }
     }
-}
-}
+    
+    function finalizaJogo(){
+        const cartasViradas = document.querySelectorAll(".virar");
+        if(cartasViradas.length === converteNum ){
+            alert("parabens voce é pica!")
+        }
+    }
+
+
+
+    
+    
+    //vetCompara.push(carta);
+    //console.log(vetCompara);
+    //console.log(efeitoVirar);
+   // console.log(selecionaCarta);
+    //console.log(viraCarta);
+
+    //if(vetCompara.length === 2){
+
+     //   for(let i = 0; i<2; i++){
+     //       if (vetCompara[0] === vetCompara[1]){
+     //           vetCompara = [];
+     //           console.log(vetCompara);
+     //   }   else {
+        
+     //   efeitoVirar.classList.remove('virar');
+        
+     //   viraCarta.classList.remove('esconder');
+        
+     //   selecionaCarta.classList.add('esconder');
+    
+        
+   // }
+  //  }
+//}
+
 
 
    

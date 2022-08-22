@@ -23,7 +23,7 @@ body {
     text-align: center;
     color: #75B79E;
     margin-top: 40px;
-    margin-bottom: 30px;
+    
 
 }
 .jogo{
@@ -44,38 +44,42 @@ body {
 
 
 .carta{
+    width: 120px;
+    margin-right: 34px;
+    margin-bottom: 34px;
+    margin-top: -100px;
+    position: relative;
+
+    transition: all 1s;
+    transform-style: preserve-3d;
+   
+}
+
+.frente, .tras{
     height: 146px;
     width: 117px;
     border-radius: 5px;
     background-color: #A7E9AF;
-    margin-right: 34px;
-    margin-bottom: 34px;
+   
+    border: 1px solid #99CEA8;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    border: 1px solid #99CEA8;
-
-    transition: all 1s;
-   
+    backface-visibility: hidden;
+    position: absolute;
 }
 
-.frente {
-
-   
-}
 .tras{
-    transform: scaleX(-1);
+    transform: rotateY(180deg);
+    
 }
 
 .virar{
     transform: rotateY(180deg);
-    
 }
-.esconder{
-    display: none;
-    
-}
+
+
 @media(max-width: 335px){
 
     .titulo{
