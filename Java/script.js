@@ -51,11 +51,12 @@ while(converteNum >= contador){
     contador++;
     index++;
     
+    
 }
 
 let primeiraCarta = '';
 let segundaCarta = '';
-
+let jogadas = 0;
 function clicaCarta(carta){
     const efeitoVirar = carta;
 
@@ -72,19 +73,23 @@ function clicaCarta(carta){
         efeitoVirar.classList.add('virar');
         segundaCarta = carta;
         }
-
+        jogadas++;
         cofereCartas();
     }
 
     function cofereCartas(){
         const primeiraImagem = primeiraCarta.getAttribute('data-character');
         const segundaImagem = segundaCarta.getAttribute('data-character');
-
+       
         if(primeiraImagem === segundaImagem){
             primeiraCarta = '';
             segundaCarta = '';
+            setTimeout(() => {
 
-            finalizaJogo();
+                finalizaJogo();
+
+            }, 300)
+            
 
         } else {
 
@@ -101,43 +106,35 @@ function clicaCarta(carta){
         
         }
     }
+    let mudaTempo=0;
+function timer(){
+    let tempo = document.querySelector(".timer");
+    tempo.innerHTML = Number(tempo.innerHTML) + 1;
+    mudaTempo = tempo.innerHTML;
+}
+setInterval(timer, 1000);
     
     function finalizaJogo(){
         const cartasViradas = document.querySelectorAll(".virar");
+        let pergunta;
         if(cartasViradas.length === converteNum ){
-            alert("parabens voce é pica!")
+            alert(`Você ganhou em ${jogadas} jogadas e em ${mudaTempo} segundos!`);
+            pergunta = prompt('Deseja jogar outra partida? (responda com sim ou não)');
+            pergunta.toLowerCase();
+            pergunta.normalize('NFD');
+            if(pergunta === "nao"){
+         
+                return;
+            } else if(pergunta === "sim"){
+                document.location.reload(true);
+            } else{alert('Comando inválido')}
+
+            
+
+            
         }
     }
-
-
-
     
-    
-    //vetCompara.push(carta);
-    //console.log(vetCompara);
-    //console.log(efeitoVirar);
-   // console.log(selecionaCarta);
-    //console.log(viraCarta);
-
-    //if(vetCompara.length === 2){
-
-     //   for(let i = 0; i<2; i++){
-     //       if (vetCompara[0] === vetCompara[1]){
-     //           vetCompara = [];
-     //           console.log(vetCompara);
-     //   }   else {
-        
-     //   efeitoVirar.classList.remove('virar');
-        
-     //   viraCarta.classList.remove('esconder');
-        
-     //   selecionaCarta.classList.add('esconder');
-    
-        
-   // }
-  //  }
-//}
-
 
 
    
