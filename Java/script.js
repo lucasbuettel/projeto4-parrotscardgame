@@ -51,13 +51,17 @@ while(converteNum >= contador){
     contador++;
     index++;
     
-    
+
 }
 
 let primeiraCarta = '';
 let segundaCarta = '';
 let jogadas = 0;
+
 function clicaCarta(carta){
+    setTimeout(() => {
+
+    
     const efeitoVirar = carta;
 
         if(carta.className.includes("virar")){
@@ -74,7 +78,7 @@ function clicaCarta(carta){
         segundaCarta = carta;
         }
         jogadas++;
-        cofereCartas();
+        cofereCartas();}, 200)
     }
 
     function cofereCartas(){
@@ -118,12 +122,13 @@ setInterval(timer, 1000);
         const cartasViradas = document.querySelectorAll(".virar");
         let pergunta;
         if(cartasViradas.length === converteNum ){
+            
             alert(`Você ganhou em ${jogadas} jogadas e em ${mudaTempo} segundos!`);
             pergunta = prompt('Deseja jogar outra partida? (responda com sim ou não)');
             pergunta.toLowerCase();
             pergunta.normalize('NFD');
             if(pergunta === "nao"){
-         
+                alert("Obrigado por jogar!");
                 return;
             } else if(pergunta === "sim"){
                 document.location.reload(true);
